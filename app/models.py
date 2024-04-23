@@ -5,9 +5,9 @@ endpoints = {
     "gpt-3.5-turbo":"https://api.openai.com/v1/chat/completions",
     "gpt-4":"https://api.openai.com/v1/chat/completions",
     "claude-2.1":"https://api.anthropic.com/v1/complete",
-    "open-mistral-7b":"https://api.mistral.ai/v1/models/chat/completions",
-    "mistral-small":"https://api.mistral.ai/v1/models/chat/completions", 
-    "mistral-medium":"https://api.mistral.ai/v1/models/chat/completions",
+    "open-mistral-7b":"https://api.mistral.ai/v1/chat/completions",
+    "mistral-small":"https://api.mistral.ai/v1/chat/completions", 
+    "mistral-medium":"https://api.mistral.ai/v1/chat/completions",
 }
 
 authHeaders = {

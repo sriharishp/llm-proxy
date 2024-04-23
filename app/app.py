@@ -23,6 +23,7 @@ Request authentication is done automatically by FastAPI
 def completions(item: CompletionRequest, request: Request)-> Any:
     model = item.model
     json = {}
+    headers={authHeaders[model]: request.headers[authHeaders[model]]}
     if model not in endpoints:
         return BaseException
     elif model == 'claude-2.1':
@@ -31,6 +32,7 @@ def completions(item: CompletionRequest, request: Request)-> Any:
             "prompt": item.prompt,
             "max_tokens_to_sample": item.max_tokens_to_sample
         }
+        headers['anthropic-version'] = request.headers['anthropic-version']
     else:
         json={
             "model": item.model,
@@ -40,7 +42,7 @@ def completions(item: CompletionRequest, request: Request)-> Any:
     response = httpx.post(
         endpoints[model],
         json=json,
-        headers={authHeaders[model]: request.headers[authHeaders[model]]},
+        headers=headers,
     )
 
     return response.json()
